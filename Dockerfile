@@ -11,10 +11,10 @@ VOLUME /tmp
 EXPOSE 8085
 
 # The application's jar file
-COPY /target/karafbootrest-0.0.1-SNAPSHOT.jar //
+COPY /target/jacoco-0.0.1-SNAPSHOT.jar //
 # The application properties
 #COPY /var/lib/jenkins/workspace/Test/src/main/resources/application.yml //
 
 
 # Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/karafbootrest.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/jacoco-0.0.1-SNAPSHOT.jar"]
