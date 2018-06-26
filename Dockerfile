@@ -15,5 +15,6 @@ COPY /target/karafbootrest-0.0.1-SNAPSHOT.jar //
 # The application properties
 #COPY /var/lib/jenkins/workspace/Test/src/main/resources/application.yml //
 
+
 # Run the jar file
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/karafbootrest.jar"]
