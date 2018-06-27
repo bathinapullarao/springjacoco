@@ -12,22 +12,15 @@ node
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
         }
 
-	stage('Sonar')
-	{
-        try {
-            sh "mvn sonar:sonar"
-            } 
-	catch(error)
-	    {
-            echo "The sonar server could not be reached ${error}"
-            }
-        }
 	
 	
 	stage('gitCheckout') 
 	{
         checkout scm
     	}
+	
+	
+	
 	stage('Build')
 	{
         sh "mvn clean install"
@@ -54,7 +47,16 @@ node
         runApp(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, HTTP_PORT)
     }
 
-	
+	stage('Sonar')
+	{
+        try {
+            sh "mvn sonar:sonar"
+            } 
+	catch(error)
+	    {
+            echo "The sonar server could not be reached ${error}"
+            }
+        }
 
 	
 /*	stage('Junit')
