@@ -17,7 +17,7 @@ stage('gitCheckout')
     	}
 stage('Build')
 	{
-        sh "mvn package"
+        sh "mvn clean install"
         }
   
      stage("Prune_deleteUnusedImages")
