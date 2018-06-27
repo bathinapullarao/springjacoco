@@ -44,9 +44,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-</dependencies>
-
-         <dependencies>
     <dependency>
         <groupId>com.github.sgoertzen</groupId>
         <artifactId>sonarbreak</artifactId>
