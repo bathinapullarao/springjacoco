@@ -51,112 +51,52 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-           <!-- jacoco 查看详细信息使用如下方法-->
             <!-- mvn help:describe -Dplugin=org.jacoco:jacoco-maven-plugin -Ddetail -->
             <plugin>
-
                 <groupId>org.jacoco</groupId>
-
                 <artifactId>jacoco-maven-plugin</artifactId>
-
                 <version>0.8.0</version>
-
                 <executions>
-
                     <execution>
-
                         <id>default-prepare-agent</id>
-
                         <goals>
-
                             <goal>prepare-agent</goal>
-
                         </goals>
-
                     </execution>
-
                     <execution>
-
                         <id>default-report</id>
-
-                        <!-- 打包时候执行 -->
-
                         <phase>prepare-package</phase>
-
                         <goals>
-
-                            <!-- 打报告 -->
-
                             <goal>report</goal>
-
                         </goals>
-
                     </execution>
-
                     <execution>
-
                         <id>default-check</id>
-
-                        <!-- 打包时候执行 -->
-
                         <phase>prepare-package</phase>
-
                         <goals>
-
-                            <!-- 检查 -->
-
                             <goal>check</goal>
-
                         </goals>
-
                         <configuration>
-
                             <rules>
-
                                 <rule>
-
                                     <element>CLASS</element>
-
                                     <includes>
-
                                         <include>cn.hy.jacoco.dao.*</include>
-
                                         <include>cn.hy.jacoco.service.*</include>
-
                                     </includes>
-
                                     <limits>
-
                                         <limit>
-
                                             <counter>LINE</counter>
-
-                                            <!-- 单元测试覆盖率 -->
-
-                                            <value>COVEREDRATIO</value>
-
-                                            <!-- 单元测试覆盖率大小 -->
-
+                                           <value>COVEREDRATIO</value>
                                             <minimum>0.10</minimum>
-
                                         </limit>
-
                                     </limits>
-
                                </rule>
-
                             </rules>
-
                         </configuration>
-
                     </execution>
-
                 </executions>
-
-            </plugin>
-
+           </plugin>
         </plugins>
-
     </build>
-
 </project>
