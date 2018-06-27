@@ -60,7 +60,7 @@ node
             }
         }
 
-import static groovyx.net.http.ContentType.TEXT
+//import static groovyx.net.http.ContentType.TEXT
 // Define URL variable
 String taskURL = "http://192.168.91.49:9000/api/ce/task?id=TASK_ID"
 String projectStatusURL = "http://192.168.91.49:9000/api/qualitygates/project_status?analysisId="
