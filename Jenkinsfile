@@ -78,7 +78,7 @@ sleep(1000)
       assert qualitygates.projectStatus.status != "ERROR" : "Build fail because sonar project status is not ok"
       println "Huraaaah! You made it :) Sonar Results are good"
 
-def httpClient(String url){
+def httpClient(String taskURL){
     def taskClient = new groovyx.net.http.HTTPBuilder(url)
     taskClient.setHeaders(Accept: 'application/json')
     def response =  taskClient.get(contentType: TEXT)
