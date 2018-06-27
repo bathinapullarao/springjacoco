@@ -82,7 +82,7 @@ def httpClient(String url){
     def taskClient = new groovyx.net.http.HTTPBuilder(url)
     taskClient.setHeaders(Accept: 'application/json')
     def response =  taskClient.get(contentType: TEXT)
-    def sluper = def new groovy.json.JsonSlurper().parse(response)
+//    def sluper = def new groovy.json.JsonSlurper().parse(response)
 }      
 
 
