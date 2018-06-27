@@ -1,4 +1,4 @@
-import static groovyx.net.http.ContentType.TEXT
+//import static groovyx.net.http.ContentType.TEXT
 
 def CONTAINER_NAME="jenkins-pipelin"
 def CONTAINER_TAG="latest"
