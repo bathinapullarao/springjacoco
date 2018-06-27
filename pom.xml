@@ -27,20 +27,7 @@
     </properties>
 
          
-     <scm>
-        <connection>scm:git:ssh://github.com/jenkinsci/sonar-quality-gates-plugin.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/sonar-quality-gates-plugin.git</developerConnection>
-        <url>https://github.com/jenkinci/sonar-quality-gates-plugin</url>
-        <tag>1.0.4</tag>
-    </scm>
-         
-     <scm>
-    <connection>scm:git:git@github.com:SonarQubeCommunity/sonar-build-breaker.git</connection>
-    <developerConnection>scm:git:git@github.com:SonarQubeCommunity/sonar-build-breaker.git</developerConnection>
-    <url>https://github.com/SonarQubeCommunity/sonar-build-breaker</url>
-    <tag>HEAD</tag>
-  </scm>
-         
+              
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
