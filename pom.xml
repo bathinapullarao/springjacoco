@@ -18,16 +18,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-         <groupId>org.sonarqubecommunity.buildbreaker</groupId>
-         <artifactId>sonar-build-breaker-plugin</artifactId>
-         <version>2.3-SNAPSHOT</version>
-         <packaging>sonar-plugin</packaging>
-
-         <name>SonarQube Build Breaker Plugin</name>
-         <description>Break the analyzer if the project does not pass its Quality Gate</description>
-         <url>https://github.com/SonarQubeCommunity/sonar-build-breaker</url>
-         <inceptionYear>2009</inceptionYear>
-         
+                 
          
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
