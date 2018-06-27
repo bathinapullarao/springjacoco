@@ -1,4 +1,4 @@
-//import static groovyx.net.http.ContentType.TEXT
+import static groovyx.net.http.ContentType.TEXT
 
 def CONTAINER_NAME="jenkins-pipelin"
 def CONTAINER_TAG="latest"
@@ -62,7 +62,7 @@ node
 Grapes(
     Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
 )
-import static groovyx.net.http.ContentType.TEXT
+//import static groovyx.net.http.ContentType.TEXT
 // Define URL variable
 String taskURL = "http://192.168.91.49:9000/api/ce/task?id=TASK_ID"
 String projectStatusURL = "http://192.168.91.49:9000/api/qualitygates/project_status?analysisId="
