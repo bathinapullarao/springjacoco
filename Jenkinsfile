@@ -11,11 +11,24 @@ node
         def mavenHome  = tool 'myMaven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
         }
-stage('gitCheckout') 
+
+	stage('Sonar')
+	{
+        try {
+            sh "mvn sonar:sonar"
+            } 
+	catch(error)
+	    {
+            echo "The sonar server could not be reached ${error}"
+            }
+        }
+	
+	
+	stage('gitCheckout') 
 	{
         checkout scm
     	}
-stage('Build')
+	stage('Build')
 	{
         sh "mvn clean install"
         }
@@ -41,19 +54,10 @@ stage('Build')
         runApp(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, HTTP_PORT)
     }
 
-	stage('Sonar')
-	{
-        try {
-            sh "mvn sonar:sonar"
-            } 
-	catch(error)
-	    {
-            echo "The sonar server could not be reached ${error}"
-            }
-        }
+	
 
 	
-	stage('Junit')
+/*	stage('Junit')
 	{
         try {
             sh "mvn test" 
@@ -62,7 +66,7 @@ stage('Build')
             echo "The Maven can not perform Junit ${error}"
             }
         }
-	
+	*/
 	
     stage('approvalofQA'){
     input "Deploy to QA?"
