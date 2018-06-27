@@ -56,17 +56,26 @@ node
             echo "The sonar server could not be reached ${error}"
             }
         }
-	
+
+	stage('build & SonarQube Scan') 
+	{
+    withSonarQubeEnv('http://192.168.91.49:9000') 
+		{
+      sh 'mvn clean package sonar:sonar'
+    		} // SonarQube taskId is automatically attached to the pipeline context
+  	}
+
 stage("Quality Gate") 
 	{
   timeout(time: 1, unit: 'HOURS') 
 		{ // Just in case something goes wrong, pipeline will be killed after a timeout
     def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
-    if (qg.status != 'OK') {
+    if (qg.status != 'OK') 
+			{
       error "Pipeline aborted due to quality gate failure: ${qg.status}"
-    }
-  }
-}	
+			}
+		}
+	}	
 	
 
 	
