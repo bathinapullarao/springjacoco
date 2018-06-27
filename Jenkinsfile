@@ -59,8 +59,8 @@ node
 	
 	
 	
-@Grapes(
-    @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
+Grapes(
+    Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
 )
 import static groovyx.net.http.ContentType.TEXT
 // Define URL variable
