@@ -19,26 +19,8 @@ stage('Build')
 	{
         sh "mvn package"
         }
-  stage('Junit')
-	{
-        try {
-            sh "mvn test" 
-	    } catch(error)
-	    {
-            echo "The Maven can not perform Junit ${error}"
-            }
-        }
-  stage('Sonar')
-	{
-        try {
-            sh "mvn sonar:sonar"
-            } 
-	catch(error)
-	    {
-            echo "The sonar server could not be reached ${error}"
-            }
-        }
-   stage("Prune_deleteUnusedImages")
+  
+     stage("Prune_deleteUnusedImages")
 	{
         imagePrune(CONTAINER_NAME)
         }
@@ -59,7 +41,29 @@ stage('Build')
         runApp(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, HTTP_PORT)
     }
 
-    
+	stage('Sonar')
+	{
+        try {
+            sh "mvn sonar:sonar"
+            } 
+	catch(error)
+	    {
+            echo "The sonar server could not be reached ${error}"
+            }
+        }
+
+	
+	stage('Junit')
+	{
+        try {
+            sh "mvn test" 
+	    } catch(error)
+	    {
+            echo "The Maven can not perform Junit ${error}"
+            }
+        }
+	
+	
     stage('approvalofQA'){
     input "Deploy to QA?"
     }
