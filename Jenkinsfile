@@ -59,7 +59,7 @@ node
 
 	stage('build & SonarQube Scan') 
 	{
-    withSonarQubeEnv('My SonarQube Server') 
+    withSonarQubeEnv('http://192.168.91.49:9000') 
 		{
       sh 'mvn clean package sonar:sonar'
     		} // SonarQube taskId is automatically attached to the pipeline context
