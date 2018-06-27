@@ -51,29 +51,26 @@
         </dependency>
 
         <dependency>
-                  <groupId>com.github.sgoertzen</groupId>
+                  <groupId>org.springframework.boot</groupId>
                   <artifactId>sonarbreak</artifactId>
                   <version>1.2.2</version>
          </dependency>
-             
-             
+        
              <dependency>
                   <groupId>org.springframework.boot</groupId>
                   <artifactId>spring-boot-starter-test</artifactId>
                   <scope>test</scope>
         </dependency>
-
-    
-</dependencies>
+    </dependencies>
 
 <build>
     <plugins>
         <plugin>
-            <groupId>com.github.sgoertzen</groupId>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>sonarbreak</artifactId>
             <version>1.2.2</version>
             <configuration>
-                <sonarServer>https://sonar.yourserver.com</sonarServer>
+                <sonarServer>https://192.168.91.49:9000</sonarServer>
             </configuration>
         </plugin>
     </plugins>
