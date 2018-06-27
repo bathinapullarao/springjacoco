@@ -59,9 +59,9 @@ node
         }
 
 
-@Grapes(
+/* @Grapes(
     @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
-)
+)  */
 
 
 def taskClient = new groovyx.net.http.HTTPBuilder('http://192.168.91.49:9000/api/ce/task?id=TASK_ID')  
