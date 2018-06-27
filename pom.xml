@@ -57,6 +57,29 @@
 </dependencies>
          
          
+  <dependencies>
+    <dependency>
+        <groupId>com.github.sgoertzen</groupId>
+        <artifactId>sonarbreak</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+</dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>com.github.sgoertzen</groupId>
+            <artifactId>sonarbreak</artifactId>
+            <version>1.2.2</version>
+            <configuration>
+                <sonarServer>https://sonar.yourserver.com</sonarServer>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+         
+         
+         
     <build>
         <plugins>
             <plugin>
