@@ -45,7 +45,18 @@
             <scope>test</scope>
         </dependency>
 </dependencies>
-   <build>
+
+  <scm>
+    <connection>scm:git:git@github.com:SonarQubeCommunity/sonar-build-breaker.git</connection>
+    <developerConnection>scm:git:git@github.com:SonarQubeCommunity/sonar-build-breaker.git</developerConnection>
+    <url>https://github.com/SonarQubeCommunity/sonar-build-breaker</url>
+    <tag>HEAD</tag>
+  </scm>
+         
+         
+         
+         
+         <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
