@@ -52,6 +52,15 @@
     <url>https://github.com/SonarQubeCommunity/sonar-build-breaker</url>
     <tag>HEAD</tag>
   </scm>
+   
+   <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/SonarQubeCommunity/sonar-build-breaker/issues</url>
+  </issueManagement>
+  <ciManagement>
+    <system>Travis</system>
+    <url>https://travis-ci.org/SonarQubeCommunity/sonar-build-breaker</url>
+  </ciManagement>
          
          
          
