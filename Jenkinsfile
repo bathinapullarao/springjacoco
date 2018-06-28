@@ -57,7 +57,7 @@ node
             }
         }
 
-	stage('build & SonarQube Scan') 
+/*	stage('build & SonarQube Scan') 
 	{
     withSonarQubeEnv('http://192.168.91.49:9000') 
 		{
@@ -80,7 +80,7 @@ stage("Quality Gate")
 
 	
 	
-/*	stage('Junit')
+	stage('Junit')
 	{
         try {
             sh "mvn test" 
