@@ -41,7 +41,7 @@ pipeline
           }
       }
     }
-  stage('Sonar')
+ /* stage('Sonar')
     {
            try 
            {
@@ -51,8 +51,8 @@ pipeline
 	          {
             echo "The sonar server could not be reached ${error}"
             }
-     }
-/*  stage('unitTest')
+     }   */
+ stage('unitTest')
 	{
         try {
             sh "mvn test" 
@@ -62,7 +62,7 @@ pipeline
             echo "The Maven can not perform Junit ${error}"
             }
    }
-  
+/*  
     
 stage('approvalofQA')
 	  {
