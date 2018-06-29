@@ -1,8 +1,6 @@
 #!groovy
 node
 {
-   stages 
-{
    /* stage('declareEnvVariables')
 	{
         def dockerHome = tool 'myDocker'
@@ -164,5 +162,4 @@ stage('approvalofQA')
 		       }  
            }
   */  
- }
 }
