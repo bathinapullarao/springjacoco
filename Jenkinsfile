@@ -90,85 +90,94 @@ stage('approvalofQA')
 	
 	
 	
-   pipeline {
+   pipeline 
+   {
     agent none
-      stages {
-        stage('parallel deploytoUAT prod') 
-	      {
-            parallel {
-		    
-		    stage('approvalOfUAT'){
-		    {
+      stages 
+     {
+        stage('parallel deploytoUAT prod')
+ 	{
+            parallel
+           {
+		    stage('approvalOfUAT')
+	     	{
+	           {
     		input "Deploy to UAT?"
-    			}
-    		node {
+     		   }
+    		node
+		   {
 			slackSend (channel: "#jenkins_notification", color: '#4286f4', message: "Deploy Approval: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})")
-                script {
-                    try  {
-                        timeout(time:01, unit:'MINUTES') 
-			    {
+                script
+			{
+                    try
+		           {
+                        timeout(time:01, unit:'MINUTES')
+			       {
                             env.APPROVE_UAT = input message: 'Deploy to UAT', ok: 'Continue',
                                 parameters: [choice(name: 'APPROVE_UAT', choices: 'YES\nNO', description: 'Deploy to UAT?')]
                             if (env.APPROVE_UAT == 'YES')
 				    {
-				    stage('deploy to UAT'){
+				    stage('deploy to UAT')
+					    {
 					   sh "docker run -p 8083:8080 bathinapullarao/spring-petclinic:latest" 
         			    	//dipUAT(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8087)
-        						}
+        				    }
                                 env.DPROD = true
-                            	    } else 
+                            	    } 
+				    else 
 				    {
                                 env.DPROD = false
 			        echo "UAT faild"
                             	    }
+                                }
                             }
-                    	  } catch (error) 
-			{
+								
+		  catch (error) 
+			 {
                         env.DPROD = true
                         echo 'Timeout has been reached! Deploy to PRODUCTION automatically activated'
-                    	}
+                    	 }
 		      }
 		}
           }
-		    stage('approvalOfProd')
-		    {
-		     {
-    			input "Deploy to Prod?"
-    			}
+          stage('approvalOfProd')
+	  {
+	     {
+		input "Deploy to Prod?"
+    	     }
     		node 
-	{
+	     {
 	    slackSend (channel: "#jenkins_notification", color: '#4286f4', message: "Deploy Approval: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})")
-                script {
-                    try  {
+                script 
+		{
+                    try
+		    {
                         timeout(time:01, unit:'MINUTES') 
-			    {
+			{
                             env.APPROVE_PROD = input message: 'Deploy to Production', ok: 'Continue',
                                 parameters: [choice(name: 'APPROVE_PROD', choices: 'YES\nNO', description: 'Deploy from STAGING to PRODUCTION?')]
                             if (env.APPROVE_PROD == 'YES')
-				    {
+			    {
                                 stage('deploy to Prod')
-					    {
+			        {
 				         sh "docker run -p 8084:8080 bathinapullarao/spring-petclinic:latest" 
         				//dipProd(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8088)
-        				    }
+        		        }
 					    env.DPROD = true
-				    }
-			             else 
-				    {
+			    }
+		            else
+			    {
                                 env.DPROD = false
 				echo "Rejected to Deploy by DEVOPS eng"
-                            	    }
-                             }
-                    	   } catch (error) 
-			   {
+                            }
+                        }
+                     }
+		     catch (error) 
+	             {
                         env.DPROD = true
                         echo 'Timeout has been reached! Deploy to PRODUCTION automatically activated'
-                           }
-		       }  
-		}
-		    }
-	    }
-	      }
-      }
-   }
-}
+                     }
+		}  
+	
+	      } 
+	  }                        }   }  }  } }
