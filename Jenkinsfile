@@ -32,7 +32,7 @@ node
     {
            try 
            {
-            sh "mvn sonar:sonar"
+            sh "mvn sonar:sonar sonar-break:sonar-break"
             } 
 	         catch(error)
 	          {
