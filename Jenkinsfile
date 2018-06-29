@@ -52,7 +52,7 @@ pipeline
             echo "The sonar server could not be reached ${error}"
             }
      }
-  stage('unitTest')
+/*  stage('unitTest')
 	{
         try {
             sh "mvn test" 
@@ -161,6 +161,6 @@ stage('approvalofQA')
                            }
 		       }  
            }
-    
+  */  
   }
 }
