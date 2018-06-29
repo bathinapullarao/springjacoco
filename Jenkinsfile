@@ -100,8 +100,7 @@ stage('approvalofQA')
             parallel
            {
 		    stage('approvalOfUAT')
-	     	{
-	           {
+	     	   {
     		input "Deploy to UAT?"
      		   }
     		node
@@ -139,9 +138,7 @@ stage('approvalofQA')
                     	 }
 		      }
 		}
-          }
           stage('approvalOfProd')
-	  {
 	     {
 		input "Deploy to Prod?"
     	     }
@@ -177,7 +174,5 @@ stage('approvalofQA')
                         env.DPROD = true
                         echo 'Timeout has been reached! Deploy to PRODUCTION automatically activated'
                      }
-		}  
-	
-	      } 
+		} 
 	  }                        }   }  }  } }
