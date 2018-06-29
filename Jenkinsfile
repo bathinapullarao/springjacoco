@@ -68,7 +68,7 @@ stage('approvalofQA')
 				    {
 			            stage('deploy to QA')
 					    {
-			         	    sh "docker run -p 8082:8080 bathinapullarao/spring-petclinic" 
+			         	    sh "docker run -p 8082:8080 bathinapullarao/spring-petclinic:latest" 
                                            // dipQA(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8086)
                                             }
 	                             env.DPROD = true
@@ -101,7 +101,7 @@ stage('approvalofQA')
                             if (env.APPROVE_UAT == 'YES')
 				    {
 				    stage('deploy to UAT'){
-					   sh "docker run -p 8083:8080 bathinapullarao/spring-petclinic" 
+					   sh "docker run -p 8083:8080 bathinapullarao/spring-petclinic:latest" 
         			    	//dipUAT(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8087)
         						}
                                 env.DPROD = true
@@ -134,7 +134,7 @@ stage('approvalofQA')
 				    {
                                 stage('deploy to Prod')
 					    {
-				         sh "docker run -p 8084:8080 bathinapullarao/spring-petclinic" 
+				         sh "docker run -p 8084:8080 bathinapullarao/spring-petclinic:latest" 
         				//dipProd(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8088)
         				    }
 					    env.DPROD = true
