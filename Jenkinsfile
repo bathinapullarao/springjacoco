@@ -90,12 +90,12 @@ stage('approvalofQA')
 	
 	
 	
-      stages 
+/*      stages 
      {
         stage('parallel deploytoUAT prod')
  	{
             parallel
-           {
+           {          */
 		    stage('approvalOfUAT')
 	     	   {
     		input "Deploy to UAT?"
@@ -172,4 +172,7 @@ stage('approvalofQA')
                         echo 'Timeout has been reached! Deploy to PRODUCTION automatically activated'
                      }
 		} 
-	  }                      }  }  } }
+	  }                      } 
+
+
+// }  } }
