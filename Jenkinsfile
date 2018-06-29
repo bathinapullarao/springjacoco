@@ -51,7 +51,7 @@ node
             }
    }
 
-    
+*/    
 stage('approvalofQA')
 	  {
     input "Deploy to QA?"
@@ -69,7 +69,8 @@ stage('approvalofQA')
 					    
 			            stage('deploy to QA')
 					    {
-                                            dipQA(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8086)
+						    docker run -p 8081:8080 bathinapullarao/spring-petclinic 
+                                           // dipQA(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8086)
                                             }
 					    	    
                                 env.DPROD = true
@@ -100,7 +101,8 @@ stage('approvalofQA')
                             if (env.APPROVE_UAT == 'YES')
 				    {
 				    stage('deploy to UAT'){
-        			    	dipUAT(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8087)
+					    docker run -p 8082:8080 bathinapullarao/spring-petclinic 
+        			    	//dipUAT(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8087)
         						}
                                 env.DPROD = true
                             	    } else 
@@ -132,7 +134,8 @@ stage('approvalofQA')
 				    {
                                 stage('deploy to Prod')
 					    {
-        				dipProd(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8088)
+				         docker run -p 8083:8080 bathinapullarao/spring-petclinic 
+        				//dipProd(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8088)
         				    }
 					    env.DPROD = true
 				    }
@@ -149,5 +152,5 @@ stage('approvalofQA')
                            }
 		       }  
            }
-  */  
+    
 }
