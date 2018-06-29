@@ -90,9 +90,6 @@ stage('approvalofQA')
 	
 	
 	
-   pipeline 
-   {
-    agent none
       stages 
      {
         stage('parallel deploytoUAT prod')
@@ -175,4 +172,4 @@ stage('approvalofQA')
                         echo 'Timeout has been reached! Deploy to PRODUCTION automatically activated'
                      }
 		} 
-	  }                        }   }  }  } }
+	  }                      }  }  } }
