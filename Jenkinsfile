@@ -5,13 +5,19 @@ pipeline
   agent none
   stages 
   {
-	
-   stage('Maven Install') 
-    {
-	    def dockerHome = tool 'myDocker'
+    stage('declareEnvVariables')
+	{
+        def dockerHome = tool 'myDocker'
         def mavenHome  = tool 'myMaven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
-     /* agent 
+        }
+	stage('gitCheckout') 
+	{
+        checkout scm
+    	}
+   stage('Maven Install') 
+    {
+	         /* agent 
       {
         docker 
         {
