@@ -5,7 +5,7 @@ pipeline
   agent none
   stages 
   {
-    stage('declareEnvVariables')
+   /* stage('declareEnvVariables')
 	{
         def dockerHome = tool 'myDocker'
         def mavenHome  = tool 'myMaven'
@@ -14,16 +14,16 @@ pipeline
 	stage('gitCheckout') 
 	{
         checkout scm
-    	}
+    	}  */
    stage('Maven Install') 
     {
-	         /* agent 
+	agent 
       {
         docker 
         {
           image 'maven:3.5.0'
         }
-      } */
+      } 
       steps 
       {
         sh 'mvn clean install'
