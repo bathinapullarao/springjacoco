@@ -60,7 +60,7 @@ stage('approvalofQA')
 	    slackSend (channel: "#jenkins_notification", color: '#4286f4', message: "Deploy Approval: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})")
                 script {
                     try  {
-                        timeout(time:30, unit:'MINUTES') 
+                        timeout(time:01, unit:'MINUTES') 
 			    {
                             env.APPROVE_QA = input message: 'Deploy to QA', ok: 'Continue',
                                 parameters: [choice(name: 'APPROVE_QA', choices: 'YES\nNO', description: 'Deploy to QA environment?')]
@@ -87,14 +87,25 @@ stage('approvalofQA')
                           }
                       }
 	  }
-    stage('approvalOfUAT'){
-    input "Deploy to UAT?"
-    }
-    node {
-	slackSend (channel: "#jenkins_notification", color: '#4286f4', message: "Deploy Approval: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})")
+	
+	
+	
+   pipeline {
+    agent none
+      stages {
+        stage('parallel deploytoUAT prod') 
+	      {
+            parallel {
+		    
+		    stage('approvalOfUAT'){
+		    {
+    		input "Deploy to UAT?"
+    			}
+    		node {
+			slackSend (channel: "#jenkins_notification", color: '#4286f4', message: "Deploy Approval: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})")
                 script {
                     try  {
-                        timeout(time:30, unit:'MINUTES') 
+                        timeout(time:01, unit:'MINUTES') 
 			    {
                             env.APPROVE_UAT = input message: 'Deploy to UAT', ok: 'Continue',
                                 parameters: [choice(name: 'APPROVE_UAT', choices: 'YES\nNO', description: 'Deploy to UAT?')]
@@ -117,16 +128,19 @@ stage('approvalofQA')
                         echo 'Timeout has been reached! Deploy to PRODUCTION automatically activated'
                     	}
 		      }
-	    
+		}
           }
-    stage('approvalOfProd'){
-    input "Deploy to Prod?"
-    }
-    node {
+		    stage('approvalOfProd')
+		    {
+		     {
+    			input "Deploy to Prod?"
+    			}
+    		node 
+	{
 	    slackSend (channel: "#jenkins_notification", color: '#4286f4', message: "Deploy Approval: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})")
                 script {
                     try  {
-                        timeout(time:30, unit:'MINUTES') 
+                        timeout(time:01, unit:'MINUTES') 
 			    {
                             env.APPROVE_PROD = input message: 'Deploy to Production', ok: 'Continue',
                                 parameters: [choice(name: 'APPROVE_PROD', choices: 'YES\nNO', description: 'Deploy from STAGING to PRODUCTION?')]
@@ -151,6 +165,10 @@ stage('approvalofQA')
                         echo 'Timeout has been reached! Deploy to PRODUCTION automatically activated'
                            }
 		       }  
-           }
-    
+		}
+		    }
+	    }
+	      }
+      }
+   }
 }
