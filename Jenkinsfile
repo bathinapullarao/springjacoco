@@ -51,7 +51,7 @@ pipeline
 	          {
             echo "The sonar server could not be reached ${error}"
             }
-     }   */
+     }   
  stage('unitTest')
 	{
         try {
@@ -62,7 +62,7 @@ pipeline
             echo "The Maven can not perform Junit ${error}"
             }
    }
-/*  
+
     
 stage('approvalofQA')
 	  {
