@@ -1,7 +1,7 @@
 //#!groovy
 node
 {
-   /* stage('declareEnvVariables')
+ stage('declareEnvVariables')
 	{
         def dockerHome = tool 'myDocker'
         def mavenHome  = tool 'myMaven'
@@ -10,18 +10,11 @@ node
 	stage('gitCheckout') 
 	{
         checkout scm
-    	}  */
+    	}  
    stage('Maven Install') 
-    {
-        docker 
-        {
-          image 'maven:3.5.0'
-        }
-      steps 
       {
         sh 'mvn clean install'
       }
-    }
     stage('Docker Build') 
     {
       steps 
