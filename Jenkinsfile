@@ -1,11 +1,11 @@
 #!groovy
 
-//pipeline
-node
+pipeline
+
 {
   agent none
- // stages 
- //{
+ stages 
+{
    /* stage('declareEnvVariables')
 	{
         def dockerHome = tool 'myDocker'
@@ -173,5 +173,5 @@ stage('approvalofQA')
 		       }  
            }
   */  
- // }
+ }
 }
