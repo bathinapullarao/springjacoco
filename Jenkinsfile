@@ -66,21 +66,21 @@ stage('approvalofQA')
                                 parameters: [choice(name: 'APPROVE_QA', choices: 'YES\nNO', description: 'Deploy to QA environment?')]
                             if (env.APPROVE_QA == 'YES')
 				    {
-					    
 			            stage('deploy to QA')
 					    {
-						    docker run -p 8082:8080 bathinapullarao/spring-petclinic 
+			         	    docker run -p 8082:8080 bathinapullarao/spring-petclinic 
                                            // dipQA(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8086)
                                             }
-					    	    
-                                env.DPROD = true
-                            	    } else 
+	                             env.DPROD = true
+                            	    } 
+				    else 
 				    {
                                 env.DPROD = false
 			        echo "QA test Faild"
                                     }
                             }
-                          } catch (error) 
+                          } 
+			catch (error) 
 			  {
                         env.DPROD = true
                         echo 'Timeout has been reached! Deploy to QA automatically activated'
