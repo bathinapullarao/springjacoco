@@ -64,9 +64,10 @@ pipeline
    }
   
     
-stage('approvalofQA'){
+stage('approvalofQA')
+	  {
     input "Deploy to QA?"
-    }
+    	  }
     node {
 	    slackSend (channel: "#jenkins_notification", color: '#4286f4', message: "Deploy Approval: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})")
                 script {
@@ -159,7 +160,7 @@ stage('approvalofQA'){
                         echo 'Timeout has been reached! Deploy to PRODUCTION automatically activated'
                            }
 		       }  
-    
+           }
     
   }
 }
