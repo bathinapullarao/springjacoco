@@ -5,11 +5,12 @@ pipeline
   agent none
   stages 
   {
-	def dockerHome = tool 'myDocker'
-        def mavenHome  = tool 'myMaven'
-        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+	
    stage('Maven Install') 
     {
+	    def dockerHome = tool 'myDocker'
+        def mavenHome  = tool 'myMaven'
+        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
      /* agent 
       {
         docker 
