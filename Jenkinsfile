@@ -54,14 +54,14 @@ node
       }   */
     stage('Docker Build') 
     {
-       sh 'docker build -t bathinapullarao/spring-petclinic:latest .'
+       sh 'docker build -t bathinapullarao/spring-petclini:latest .'
     }
     stage('Docker Push') 
     {
        withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
           {
             sh "docker login -u $env.USERNAME -p $env.PASSWORD"
-            sh "docker push bathinapullarao/spring-petclinic:latest"
+            sh "docker push bathinapullarao/spring-petclini:latest"
             echo "Image push complete"
           }
      }
@@ -105,7 +105,7 @@ stage('approvalofQA')
 				    {
 			            stage('deploy to QA')
 					    {
-			         	    sh "docker run -p 8082:8080 bathinapullarao/spring-petclinic:latest" 
+			         	    sh "docker run -p 8082:8080 bathinapullarao/spring-petclini:latest" 
                                            // dipQA(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8086)
                                             }
 	                             env.DPROD = true
@@ -152,7 +152,7 @@ stage('approvalofQA')
 				    {
 				    stage('deploy to UAT')
 					    {
-					   sh "docker run -p 8083:8080 bathinapullarao/spring-petclinic:latest" 
+					   sh "docker run -p 8083:8080 bathinapullarao/spring-petclini:latest" 
         			    	//dipUAT(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8087)
         				    }
                                 env.DPROD = true
@@ -191,7 +191,7 @@ stage('approvalofQA')
 			    {
                                 stage('deploy to Prod')
 			        {
-				         sh "docker run -p 8084:8080 bathinapullarao/spring-petclinic:latest" 
+				         sh "docker run -p 8084:8080 bathinapullarao/spring-petclini:latest" 
         				//dipProd(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, 8088)
         		        }
 					    env.DPROD = true
