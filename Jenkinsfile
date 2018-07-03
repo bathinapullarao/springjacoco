@@ -22,7 +22,17 @@ node
 	          {
             echo "The sonar server could not be reached ${error}"
             }
-     }   
+     } 
+	
+	stage('SonarQube analysis') 
+	{
+    		withSonarQubeEnv('My SonarQube Server') 
+		{
+      		// requires SonarQube Scanner for Maven 3.2+
+      		sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.0:sonar'
+    		}
+  	}
+	
 	
 /*	stage('Maven Install') 
       {
