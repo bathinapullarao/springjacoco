@@ -1,16 +1,10 @@
 package cn.hy.jacoco;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class JacocoApplicationTests {
-
-    @Test
-    public void contextLoads() {
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication
+public class JacocoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(JacocoApplication.class, args);
     }
-
 }
+
