@@ -13,7 +13,7 @@ node
         checkout scm
     	}  
   
-/*	stage('Sonar')
+	stage('Sonar')
     {
            try 
            {
@@ -24,15 +24,8 @@ node
             echo "The sonar server could not be reached ${error}"
             }
      } 
-*/	
-	stage('build && SonarQube analysis') {
-            steps {
-                // Optionally use a Maven environment you've configured already
-                withMaven(maven:'Maven 3.0.5') {
-                    sh 'mvn clean package sonar:sonar'
-                }
-            }
-        }
+	
+	
         stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
