@@ -11,10 +11,23 @@ node
 	{
         checkout scm
     	}  
-   stage('Maven Install') 
+  
+	stage('Sonar')
+    {
+           try 
+           {
+            sh "mvn clean install sonar:sonar -P sonar"
+            } 
+	         catch(error)
+	          {
+            echo "The sonar server could not be reached ${error}"
+            }
+     }   
+	
+/*	stage('Maven Install') 
       {
         sh 'mvn clean install'
-      }
+      }   */
     stage('Docker Build') 
     {
        sh 'docker build -t bathinapullarao/spring-petclinic:latest .'
@@ -28,7 +41,7 @@ node
             echo "Image push complete"
           }
      }
-   stage('Sonar')
+  /* stage('Sonar')
     {
            try 
            {
@@ -39,7 +52,7 @@ node
             echo "The sonar server could not be reached ${error}"
             }
      }   
- /*
+ 
 	stage('unitTest')
 	{
         try {
