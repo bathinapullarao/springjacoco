@@ -24,7 +24,7 @@ node
             }
      } 
 	
-	stage('SonarQube analysis') 
+/*	stage('SonarQube analysis') 
 	{
     		withSonarQubeEnv('My SonarQube Server') 
 		{
@@ -34,7 +34,7 @@ node
   	}
 	
 	
-/*	stage('Maven Install') 
+	stage('Maven Install') 
       {
         sh 'mvn clean install'
       }   */
