@@ -183,7 +183,7 @@ stage('approvalofQA')
 		{
                     try
 		    {
-                        timeout(time:01, unit:'MINUTES') 
+                        timeout(time:10, unit:'MINUTES') 
 			{
                             env.APPROVE_PROD = input message: 'Deploy to Production', ok: 'Continue',
                                 parameters: [choice(name: 'APPROVE_PROD', choices: 'YES\nNO', description: 'Deploy from STAGING to PRODUCTION?')]
