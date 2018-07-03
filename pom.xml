@@ -16,42 +16,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-         <profiles>
-	<profile>
-			<id>sonar</id>
-			<properties>
-				<sonar.projectKey>${project.artifactId}</sonar.projectKey>
-				<sonar.projectName>${project.artifactId}</sonar.projectName>
-				<sonar.projectVersion>${project.version}</sonar.projectVersion>
-				<sonar.host.url>http://192.168.91.49:9000/</sonar.host.url>
-				<sonar.verbose>true</sonar.verbose>
-				<sonar.showProfiling>true</sonar.showProfiling>
-				<!-- 
-				Sonar plugin is BUGGY!! It will not run when the below property is set
-				<sonar.scanner.dumpToFile>target/sonar-properties.txt</sonar.scanner.dumpToFile>
-				-->
-				<!-- 
-				<sonar.login>admin</sonar.login>
-				<sonar.password>admin</sonar.password>
-				-->
-				<sonar.sources>src/main/java</sonar.sources>
-				<sonar.exclusions>
-					**/com/swayam/demo/springbootdemo/rest/config/**,
-					**/com/swayam/demo/springbootdemo/rest/entity/**,
-					**/RestFulMicroserviceApplication.java
-				</sonar.exclusions>
-				<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-				<sonar.language>java</sonar.language>
-				<sonar.tests>src/test/java</sonar.tests>
-				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-				<sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
-				<sonar.java.binaries>target/classes</sonar.java.binaries>
-				<sonar.jacoco.reportPaths>${jacoco.test.unit.dataFile}</sonar.jacoco.reportPaths>
-				<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-			</properties>
-	
-		</profile>
-	</profiles>	
+        
          
          
          
@@ -219,4 +184,41 @@
            </plugin>
         </plugins>
     </build>
+	
+	 <profiles>
+	<profile>
+			<id>sonar</id>
+			<properties>
+				<sonar.projectKey>${project.artifactId}</sonar.projectKey>
+				<sonar.projectName>${project.artifactId}</sonar.projectName>
+				<sonar.projectVersion>${project.version}</sonar.projectVersion>
+				<sonar.host.url>http://192.168.91.49:9000/</sonar.host.url>
+				<sonar.verbose>true</sonar.verbose>
+				<sonar.showProfiling>true</sonar.showProfiling>
+				<!-- 
+				Sonar plugin is BUGGY!! It will not run when the below property is set
+				<sonar.scanner.dumpToFile>target/sonar-properties.txt</sonar.scanner.dumpToFile>
+				-->
+				<!-- 
+				<sonar.login>admin</sonar.login>
+				<sonar.password>admin</sonar.password>
+				-->
+				<sonar.sources>src/main/java</sonar.sources>
+				<sonar.exclusions>
+					**/com/swayam/demo/springbootdemo/rest/config/**,
+					**/com/swayam/demo/springbootdemo/rest/entity/**,
+					**/RestFulMicroserviceApplication.java
+				</sonar.exclusions>
+				<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+				<sonar.language>java</sonar.language>
+				<sonar.tests>src/test/java</sonar.tests>
+				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+				<sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
+				<sonar.java.binaries>target/classes</sonar.java.binaries>
+				<sonar.jacoco.reportPaths>${jacoco.test.unit.dataFile}</sonar.jacoco.reportPaths>
+				<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+			</properties>
+	
+		</profile>
+	</profiles>	
 </project>
